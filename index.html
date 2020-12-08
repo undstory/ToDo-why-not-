@@ -3,34 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/scripts.js" async defer></script>
+  <!-- <script src="https://kit.fontawesome.com/220bbdbf50.js" crossorigin="anonymous"></script> -->
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <title>Frontend Mentor | Todo app</title>
 </head>
 <body>
 
-  Todo
+<div class="container">
+  <div class="background"></div>
+  <main class="main">
+    <header class="header">
+        <h1 class="header__title">Todo</h1>
+        <div class="header__icon"></div>
+    </header>
+    <section class="todo">
 
-  <!-- Add dynamic number --> items left
+        <div class="todo__new">
+            <button class="circle"></button>
+            <input class="todo__add" id="todo__add" type="text" placeholder="Create a new todo...">
+            <button class="todo__add--btn">+</button>
+        </div>
 
-  All
+        <div class="todo__list">
+            
+        </div>
+        
+        <div clas="todos__nav">
+          <span>items left</span>
+          <button>All</button>
+          <button>Active</button>
+          <button>Completed</button>
+          <button>Clear Comleted</button>
+        </div>
+    </section>
+  </main>
+</div>
+
+
+
+
+
+
+  <!-- Todo
+
+  Add dynamic number items left -->
+
+  <!-- All
   Active 
   Completed
 
-  Clear Completed
+  Clear Completed -->
 
-  Drag and drop to reorder list
+  <!-- Drag and drop to reorder list -->
 
-  <div class="attribution">
+  <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
-  </div>
+  </div> -->
 </body>
 </html>
