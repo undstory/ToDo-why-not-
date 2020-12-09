@@ -22,14 +22,36 @@ body {
 .todo {
     &__new {
         background-color: $desaturatedBlue;
+        color: $veryDarkGrayishDT;
     }
+
 
     &__add {
-        color: $lightGrayishDT;
+        color: $darkGrayishDT;
+
+        &::placeholder {
+            color: $veryDarkGrayishDT;
+        } 
     }
+
+    &__item {
+        background-color: $desaturatedBlue;
+        color: $darkGrayishDT;
+    }
+  
 }
 
-.todo__item {
-    background-color: $desaturatedBlue;
-    color:  $lightGrayishDT;
+.todos {
+    &__status {
+        background-color: $desaturatedBlue;
+        color: $veryDarkGrayishDT;
+
+        &--btn {
+            color: $veryDarkGrayishDT;
+
+            &:hover {
+                color: $lightGrayishBlueDT;
+            }
+        }
+    }
 }
