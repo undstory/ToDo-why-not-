@@ -2,12 +2,10 @@ body {
     background-color: $veryDarkBlue;
 }
 
-.background {
-
+.container {
     background-image: url(../images/bg-desktop-dark.jpg);
     height: 300px;
     background-size: cover;
-      
 }
 
 .header {
@@ -16,6 +14,7 @@ body {
         background-image: url("../images/icon-sun.svg");
         height: 26px;
         width: 26px;
+        margin-top: 1.5rem;
     }
 }
 

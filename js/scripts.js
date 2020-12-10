@@ -1,6 +1,7 @@
 const todoAddBtn = document.querySelector(".todo__add--btn");
 const todoAdd = document.querySelector(".todo__add");
 const todoList = document.querySelector('.todo__list');
+const todosStatus = document.querySelector('.todos__status');
 const todosStatusItems = document.querySelector('.todos__status--items');
 
 const todos = [];
@@ -13,7 +14,7 @@ class Todo  {
 
     addTodo(task) {
         this.todo = task;
-        const div = document.createElement('div');
+        let div = document.createElement('div');
         div.classList.add("todo__item");
         div.innerHTML = `<div><button class="circle"></button>
                         <span>${this.todo}</span>
@@ -22,14 +23,16 @@ class Todo  {
                         <path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 
                         8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 
                         .707.707 0 8.84 8.132 16.971 0z"/></svg></button>`;
-        todoList.appendChild(div);
+        todoList.prepend(div);
         todos.push(this.todo);
         console.log(todos);
+        todosStatus.classList.remove('none');
     }
 
     resume() {
+       
         todosStatusItems.innerText = `${todos.length} items left`;
-      
+        
     }
 
     clearInput() {
