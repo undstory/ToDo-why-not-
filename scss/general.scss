@@ -37,17 +37,31 @@ body {
 }
 
 .circle {
-    background: transparent;
+    background-color: transparent;
     flex: 0 0 auto;
     height: 24px;
     width: 24px;
     border-radius: 50%;
-    border: 1px solid $lightGrayishDT;
+    border: 2px solid $lightGrayishDT;
     opacity: .8;
     cursor: pointer;
     outline: none;
     margin: 0 .5rem;
+
+    &:hover {
+        border-color: violet;
+    }
   }
+
+.checked {
+    
+    background-image: url(../images/icon-check.svg);
+    background-image: $gradient; 
+}
+
+.complete {
+    text-decoration: line-through;
+}
 
 .close {
     margin-right: .5rem;
@@ -149,5 +163,9 @@ body {
             padding: 0 .5rem;
         }
     }
+}
+
+.done {
+    text-decoration: line-through;
 }
 

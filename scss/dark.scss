@@ -26,7 +26,7 @@ body {
 
 
     &__add {
-        color: $darkGrayishDT;
+        color: $lightGrayishDT;
 
         &::placeholder {
             color: $veryDarkGrayishDT;
@@ -35,7 +35,7 @@ body {
 
     &__item {
         background-color: $desaturatedBlue;
-        color: $darkGrayishDT;
+        color: $lightGrayishDT;
     }
   
 }
