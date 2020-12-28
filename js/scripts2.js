@@ -73,3 +73,10 @@ function updateStatus() {
     }
     return howMany;
 }
+
+
+const close = document.querySelector('.close');
+close.addEventListener('click', function() {
+    this.parentElement.remove();
+    console.log(todos);
+})

@@ -33,19 +33,35 @@ const addTodo = (e) => {
 }
 
 const createTodo = (todo) => {
+
+    
+    
     const div = document.createElement('div');
         
     div.classList.add('todo__item');
     div.innerHTML = `<div><button class="circle"></button>
                         <span class="todo__item--item">${todo.todo}</span>
                         </div>
-                        <button class="close"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+                        <button class="close" onclick=removeItem(${todo.id})><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
                         <path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 
                         8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 
                         .707.707 0 8.84 8.132 16.971 0z"/></svg></button>`
        
     todoList.prepend(div);
+
+   
+
+
 }
+
+const removeItem = (id) => {
+  
+    const temporaryTodos = todos.filter(item => item.id !== id);
+    
+    console.log(temporaryTodos);
+
+}
+
 
 
 todoAdd.addEventListener('keyup', addTodo);
