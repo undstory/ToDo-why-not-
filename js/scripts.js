@@ -3,10 +3,10 @@ const todoAddBtn = document.querySelector('.todo__add--btn');
 const todoList = document.querySelector('.todo__list');
 
 class Todo {
-    constructor(id, todo, status = false ) {
+    constructor(id, todo, isActive = true ) {
         this.id = id,
         this.todo = todo,
-        this.status = status
+        this.isActive = isActive
     }
 }
 
@@ -36,6 +36,8 @@ const createTodo = (todo) => {
 
     
     
+
+    
     const div = document.createElement('div');
         
     div.classList.add('todo__item');
@@ -48,17 +50,19 @@ const createTodo = (todo) => {
                         .707.707 0 8.84 8.132 16.971 0z"/></svg></button>`
        
     todoList.prepend(div);
-
    
+        
 
-
+    
 }
 
 const removeItem = (id) => {
-  
-    const temporaryTodos = todos.filter(item => item.id !== id);
-    
-    console.log(temporaryTodos);
+ 
+
+    const itemToRemove = todos.find(item => item.id === id);
+    todos.splice(todos.indexOf(itemToRemove));
+
+
 
 }
 
