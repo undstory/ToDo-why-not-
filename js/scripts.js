@@ -1,71 +1,32 @@
-const todoAdd = document.querySelector('.todo__add'); 
-const todoAddBtn = document.querySelector('.todo__add--btn');
-const todoList = document.querySelector('.todo__list');
+const todoInput = document.querySelector(".todo-inputBlock-ipt");
+const todoList = document.querySelector(".todo-list");
+const addBtn = document.querySelector(".todo-inputBlock-btn");
+const itemsCounter = document.querySelector(".todo-footer-itemsCounter");
 
-class Todo {
-    constructor(id, todo, isActive = true ) {
-        this.id = id,
-        this.todo = todo,
-        this.isActive = isActive
+
+todoInput.addEventListener('keyup', function(e){
+    if(e.keyCode === 13) {
+        e.preventDefault();
+        addBtn.click();
     }
-}
+})
 
-const todos = [];
+addBtn.addEventListener('click', function() {
+    if(todoInput.value == "") {
+        return false;
+    }; 
+    console.log(todoInput.value);
+    const paragraph = document.createElement("p");
+    const todosCircle = document.createElement("div");
+    const cancelBtn = document.createElement('div');
 
+    paragraph.classList.add("todos");
+    paragraph.innerText = todoInput.value;
 
+    cancelBtn.classList.add("todos-cancel");
+    cancelBtn.innerText = "X";
 
-const addTodo = (e) => {
-    
-        if(e.key === "Enter"){
-            const newTodo = e.target.value;
-            let giveMeId = todos.length + 1;
-            if(newTodo.length === 0){
-                alert("Something went wrong...");
-            } else {
-                const todo = new Todo(giveMeId, newTodo);
-                todos.push(todo);
-                console.log(todos);
-                createTodo(todo);
-                e.target.value = "";
-                
-            }
-        }
-}
-
-const createTodo = (todo) => {
-
-    
-    
-
-    
-    const div = document.createElement('div');
-        
-    div.classList.add('todo__item');
-    div.innerHTML = `<div><button class="circle"></button>
-                        <span class="todo__item--item">${todo.todo}</span>
-                        </div>
-                        <button class="close" onclick=removeItem(${todo.id})><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-                        <path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 
-                        8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 
-                        .707.707 0 8.84 8.132 16.971 0z"/></svg></button>`
-       
-    todoList.prepend(div);
-   
-        
-
-    
-}
-
-const removeItem = (id) => {
- 
-
-    const itemToRemove = todos.find(item => item.id === id);
-    todos.splice(todos.indexOf(itemToRemove));
-
-
-
-}
-
-
-
-todoAdd.addEventListener('keyup', addTodo);
+    paragraph.appendChild(todosCircle);
+    paragraph.appendChild(cancelBtn);
+    todoList.appendChild(paragraph);  
+})

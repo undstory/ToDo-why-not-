@@ -22,59 +22,27 @@
         <h1 class="header__title">Todo</h1>
         <div class="header__icon"></div>
     </header>
-    <section class="todo">
 
-        <div class="todo__new">
-            <button class="circle"></button>
-            <input class="todo__add" id="todo__add" type="text" placeholder="Create a new todo...">
-            <button class="todo__add--btn">+</button>
+    <div class="todo-inputBlock">
+        <input type="text" class="todo-inputBlock-ipt" placeholder="Create a new task..." />
+        <button class="todo-inputBlock-btn">+</button>
+    </div>
+
+    <div class="todo-list" id="sortable"></div>
+
+    <div clas="todo-footer">
+        <p class="todo-footer-itemsCounter">0 items left</p>
+        <div class="todo-footer-filters">
+            <button class="filterBtn all">All</button>
+            <button class="filterBtn active">Active</button>
+            <button class="filterBtn completed">Completed</button>
         </div>
+        <button class="todo-footer-btn clear-completed">Clear completed</button>
 
-        <div class="todos">
+    </div>
+    <small>Drag and drop to reorder list</small>
+    </main>
+    </div>
+    </body>
+    </html>
 
-
-       
-          <div class="todo__list">
-            
-          </div>
-        
-            <div class="todos__status none">
-              <div class="todos__status--items"></div>
-              <div>
-                <button class="todos__status--all todos__status--btn">All</button>
-                <button class="todos__status--active todos__status--btn">Active</button>
-                <button class="todos__status--completed todos__status--btn">Completed</button>
-              </div>
-              <button class="todos__status--clear todos__status--btn">Clear Comleted</button>
-            </div>
-        </div>
-
-    </section>
-  </main>
-</div>
-
-
-
-
-
-
-  <!-- Todo
-
-  Add dynamic number items left -->
-
-  <!-- All
-  Active 
-  Completed
-
-  Clear Completed -->
-
-  <!-- Drag and drop to reorder list -->
-
-  <!-- <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
-</body>
-</html>
-
-<!-- sass --style compressed --watch scss/style.scss:css/style.css -->
