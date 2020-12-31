@@ -1,3 +1,4 @@
+
 const todoInput = document.querySelector(".todo-inputBlock-ipt");
 const todoList = document.querySelector(".todo-list");
 const addBtn = document.querySelector(".todo-inputBlock-btn");
@@ -84,3 +85,6 @@ document.querySelector(".active").addEventListener("click", function() {
         element.style.display = "flex";
     })
 })
+
+const el = document.getElementById('sortable');
+const sortable = Sortable.create(el);
