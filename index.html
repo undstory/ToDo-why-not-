@@ -23,14 +23,17 @@
         <div class="header__icon"></div>
     </header>
 
-    <div class="todo-inputBlock">
-        <input type="text" class="todo-inputBlock-ipt" placeholder="Create a new task..." />
-        <button class="todo-inputBlock-btn">+</button>
+    <section class="todo">
+
+    
+    <div class="todo__new">
+        <input type="text" class="todo__add" placeholder="Create a new task..." />
+        <button class="todo__add--btn">+</button>
     </div>
 
-    <div class="todo-list" id="sortable"></div>
-
-    <div clas="todo-footer">
+    <div class="todo__todos">
+      <div class="todo__list" id="sortable"></div>
+      <div class="todo__footer none">
         <p class="todo-footer-itemsCounter">0 items left</p>
         <div class="todo-footer-filters">
             <button class="filterBtn all">All</button>
@@ -40,6 +43,12 @@
         <button class="todo-footer-btn clear-completed">Clear completed</button>
 
     </div>
+    </div>
+
+   
+
+   
+    </section>
     <small>Drag and drop to reorder list</small>
     </main>
     </div>

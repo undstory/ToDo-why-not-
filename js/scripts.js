@@ -1,29 +1,30 @@
 
-const todoInput = document.querySelector(".todo-inputBlock-ipt");
-const todoList = document.querySelector(".todo-list");
-const addBtn = document.querySelector(".todo-inputBlock-btn");
+const todoAdd = document.querySelector(".todo__add");
+const todoList = document.querySelector(".todo__list");
+const todoAddBtn = document.querySelector(".todo__add--btn");
 const itemsCounter = document.querySelector(".todo-footer-itemsCounter");
+const todoFooter = document.querySelector(".todo__footer");
 
 
-todoInput.addEventListener('keyup', function(e){
+todoAdd.addEventListener('keyup', function(e){
     if(e.keyCode === 13) {
         e.preventDefault();
-        addBtn.click();
+        todoAddBtn.click();
     }
 })
 
-addBtn.addEventListener('click', function() {
-    if(todoInput.value == "") {
+todoAddBtn.addEventListener('click', function() {
+    if(todoAdd.value == "") {
         return false;
     }; 
-    console.log(todoInput.value);
+    console.log(todoAdd.value);
     const paragraph = document.createElement("p");
     const todosCircle = document.createElement("div");
     const cancelBtn = document.createElement('div');
 
     paragraph.classList.add("todo__item");
     paragraph.classList.add("todos");
-    paragraph.innerText = todoInput.value;
+    paragraph.innerText = todoAdd.value;
 
     todosCircle.classList.add("todos-circle");
     cancelBtn.classList.add("todos-cancel");
@@ -33,8 +34,8 @@ addBtn.addEventListener('click', function() {
     paragraph.appendChild(cancelBtn);
     todoList.appendChild(paragraph); 
     
-    todoInput.value = "";
-
+    todoAdd.value = "";
+    
     countItem();
 
     todosCircle.addEventListener('click', function() {
@@ -51,6 +52,11 @@ addBtn.addEventListener('click', function() {
 
 function countItem() {
     const itemCount = todoList.childElementCount;
+    if(itemCount > 0) {
+        todoFooter.style.display = "flex";
+    } else {
+        todoFooter.style.display = "none";
+    }
     const checkedElement = document.querySelectorAll(".checked").length;
     const unCheckedCount = itemCount - checkedElement;
     itemsCounter.innerText = unCheckedCount + " items left"; 
@@ -59,7 +65,10 @@ function countItem() {
 document.querySelector(".clear-completed").addEventListener("click", function() {
     document.querySelectorAll(".checked").forEach(element => {
         element.remove();
+        countItem();
     })
+
+
 })
 
 document.querySelector(".all").addEventListener("click", function() {
