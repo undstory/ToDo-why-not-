@@ -53,11 +53,7 @@ body {
     }
   }
 
-.checked {
-    
-    background-image: url(../images/icon-check.svg);
-    background-image: $gradient; 
-}
+
 
 .complete {
     text-decoration: line-through;
@@ -123,6 +119,7 @@ body {
             font-family: $font;
         } 
     }
+    
 
     &__item {
         width: 100%;
@@ -134,6 +131,58 @@ body {
         font-size: .8rem;
         border-bottom-style: solid;
         border-bottom-width: .5px;
+
+        &:first-child {
+            border-top-left-radius: 5px; 
+            border-top-right-radius: 5px;
+        }
+
+    }
+
+    &__circle {
+        width: 20px;
+        height: 20px;
+        border: 1px solid hsl(237, 14%, 26%);
+        position: absolute;
+        left: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-2px);
+        cursor: pointer;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background-color: hsl(235, 24%, 19%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -5;
+        }
+
+        &:hover {
+            background-image: linear-gradient(to bottom right,
+                    hsl(192, 100%, 67%),
+                    hsl(280, 87%, 65%));
+        }
+        &.light {
+            border: 1px solid hsl(233, 11%, 84%);
+
+            &:before {
+                background-color: hsl(0, 0%, 98%);
+            }
+        }
+
+        &.clicked {
+            background: url(../images/icon-check.svg) no-repeat center center, linear-gradient(140deg, rgba(87, 221, 255, 1), rgba(192, 88, 243, 1));
+
+            &::before {
+                display: none;
+            }
+        }
     }
 }
 
@@ -179,54 +228,6 @@ body {
     padding-top: .5rem;
     font-size: .8rem;
 }
-
-
-
-    .todos-circle {
-        width: 20px;
-        height: 20px;
-        border: 1px solid hsl(237, 14%, 26%);
-        position: absolute;
-        left: 20px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: translateY(-2px);
-        cursor: pointer;
-
-        &::before {
-            content: "";
-            position: absolute;
-            width: 90%;
-            height: 90%;
-            background-color: hsl(235, 24%, 19%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -5;
-        }
-
-        &:hover {
-            background-image: linear-gradient(to bottom right,
-                    hsl(192, 100%, 67%),
-                    hsl(280, 87%, 65%));
-        }
-        &.light {
-            border: 1px solid hsl(233, 11%, 84%);
-
-            &:before {
-                background-color: hsl(0, 0%, 98%);
-            }
-        }
-
-        &.clicked {
-            background: url(../images/icon-check.svg) no-repeat center center, linear-gradient(140deg, rgba(87, 221, 255, 1), rgba(192, 88, 243, 1));
-
-            &::before {
-                display: none;
-            }
-        }
-    }
 
 .none {
     display: none;

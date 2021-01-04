@@ -18,21 +18,24 @@ todoAddBtn.addEventListener('click', function() {
         return false;
     }; 
     console.log(todoAdd.value);
+    const todoWrapper = document.createElement("div");
+    const todosCircle = document.createElement("button");
     const paragraph = document.createElement("p");
-    const todosCircle = document.createElement("div");
-    const cancelBtn = document.createElement('div');
+   
+    const cancelBtn = document.createElement('button');
 
-    paragraph.classList.add("todo__item");
+    todoWrapper.classList.add("todo__item");
     paragraph.classList.add("todos");
     paragraph.innerText = todoAdd.value;
 
-    todosCircle.classList.add("todos-circle");
+    todosCircle.classList.add("todo__circle");
     cancelBtn.classList.add("todos-cancel");
     cancelBtn.innerText = "X";
 
-    paragraph.appendChild(todosCircle);
-    paragraph.appendChild(cancelBtn);
-    todoList.appendChild(paragraph); 
+    todoWrapper.appendChild(todosCircle);
+    todoWrapper.appendChild(paragraph);
+    todoWrapper.appendChild(cancelBtn);
+    todoList.prepend(todoWrapper); 
     
     todoAdd.value = "";
     
