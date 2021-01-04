@@ -1,6 +1,7 @@
 html {
     font-size: 1.8rem;
     scroll-behavior: smooth;
+  
 }
 
 body {
@@ -11,7 +12,6 @@ body {
 .container {
     max-width: 1440px;
     margin: 0 auto;
-    position: relative;
 }
 
 .main {
@@ -76,11 +76,12 @@ body {
     }
 }
 
-.todos__status.none {
-    display: none;
-}
-
 .todo {
+
+    &__todos {
+        box-shadow: 0 10px 28px -6px black;
+        position: relative;
+    }
     
     &__new {
         width: 100%;
@@ -131,25 +132,29 @@ body {
         justify-content: space-between;
         align-items: center;
         font-size: .8rem;
+        border-bottom-style: solid;
+        border-bottom-width: .5px;
     }
 }
 
-.todos {
-    &__status {
+
+
+.todo {
+    &__footer {
         width: 100%;
         height: 2rem;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: center; 
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
+        font-size: .6rem;
         padding-left: .25rem;
+        position: relative;
 
-        &--items {
-            font-size: .6rem;
-            padding: 0 .5rem;
+        &--counter { 
+            padding-left: .5rem;
         }
-
         &--btn {
             outline: none;
             background-color: transparent;
@@ -157,16 +162,22 @@ body {
             font-size: .6rem;
             cursor: pointer;
             font-family: $font;
-        }
-
-        &--clear {
-            padding: 0 .5rem;
+            font-weight: bold;
         }
     }
 }
 
 .checked {
     text-decoration: line-through;
+}
+
+.small {
+    position: absolute;
+    bottom: -2rem;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding-top: .5rem;
+    font-size: .8rem;
 }
 
 
@@ -219,4 +230,8 @@ body {
 
 .none {
     display: none;
+}
+
+.clear-completed {
+    padding-right: .5rem;
 }

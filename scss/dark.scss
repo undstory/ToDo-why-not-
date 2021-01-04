@@ -36,12 +36,13 @@ body {
     &__item {
         background-color: $desaturatedBlue;
         color: $lightGrayishDT;
+        border-bottom-color: $veryDarkGrayishDT;
     }
   
 }
 
-.todos {
-    &__status {
+.todo {
+    &__footer {
         background-color: $desaturatedBlue;
         color: $veryDarkGrayishDT;
 
@@ -49,8 +50,13 @@ body {
             color: $veryDarkGrayishDT;
 
             &:hover {
-                color: $lightGrayishBlueDT;
+                color: $specialBlue;
             }
         }
     }
+}
+
+.small {
+    color: $veryDarkGrayishDT;
+   
 }

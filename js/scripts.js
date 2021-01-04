@@ -2,9 +2,9 @@
 const todoAdd = document.querySelector(".todo__add");
 const todoList = document.querySelector(".todo__list");
 const todoAddBtn = document.querySelector(".todo__add--btn");
-const itemsCounter = document.querySelector(".todo-footer-itemsCounter");
+const itemsCounter = document.querySelector(".todo__footer--counter");
 const todoFooter = document.querySelector(".todo__footer");
-
+const small = document.querySelector(".small");
 
 todoAdd.addEventListener('keyup', function(e){
     if(e.keyCode === 13) {
@@ -54,8 +54,10 @@ function countItem() {
     const itemCount = todoList.childElementCount;
     if(itemCount > 0) {
         todoFooter.style.display = "flex";
+        small.style.display = "flex";
     } else {
         todoFooter.style.display = "none";
+        small.style.display = "none";
     }
     const checkedElement = document.querySelectorAll(".checked").length;
     const unCheckedCount = itemCount - checkedElement;
