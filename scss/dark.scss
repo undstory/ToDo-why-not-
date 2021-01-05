@@ -43,7 +43,7 @@ body {
         color: $veryDarkGrayishDT;
 
         &:hover {
-            color: $specialBlue;
+            color: $lightGrayishDT; 
         }
     }
   
@@ -58,7 +58,7 @@ body {
             color: $veryDarkGrayishDT;
 
             &:hover {
-                color: $specialBlue;
+                color: $lightGrayishDT; 
             }
         }
     }
@@ -67,4 +67,8 @@ body {
 .small {
     color: $veryDarkGrayishDT;
    
+}
+
+.checked {
+    color: $veryDarkGrayishDT;
 }

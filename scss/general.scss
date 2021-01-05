@@ -261,12 +261,62 @@ body {
     transform: translate(50%, -50%);
     padding-top: .5rem;
     font-size: .8rem;
+    
 }
 
 .none {
     display: none;
 }
 
-.clear-completed {
+.clear__completed {
     padding-right: .5rem;
 }
+
+.todo__footer--btn.blue {
+    color: $specialBlue;
+}
+
+@media all and (max-width: 1220px) {
+    .main {
+        width: 65%;
+    }
+}
+
+@media all and (max-width: 950px) {
+    .main {
+        width: 75%;
+    }
+
+    .small {
+        font-size: .5rem;
+    }
+}
+
+@media all and (max-width: 650px) {
+    .todo__footer--btn {
+        font-size: .7rem;
+    }
+
+    .main {
+        width: 85%;
+    }
+
+    .todo__footer {
+        flex-direction: column;
+        height: 6rem;
+        justify-content: space-around;
+    }
+
+    .small {
+        font-size: .4rem;
+    }
+}
+
+@media all and (max-width: 650px) {
+   
+
+    .todo__footer--btn {
+        font-size: .6rem;
+    }
+}
+

@@ -13,7 +13,7 @@ todoAdd.addEventListener('keyup',(e) => {
     }
 })
 
-todoAddBtn.addEventListener('click', function() {
+todoAddBtn.addEventListener('click', () => {
     if(todoAdd.value == "") {
         return false;
     }; 
@@ -42,14 +42,14 @@ todoAddBtn.addEventListener('click', function() {
     
     countItem();
 
-    todosCircle.addEventListener('click', function() {
+    todosCircle.addEventListener('click', () => {
         todosCircle.classList.toggle("clicked");
         paragraph.classList.toggle("checked");
         todoWrapper.classList.toggle("unactive");
         countItem();
     })
 
-    cancelBtn.addEventListener("click", function() {
+    cancelBtn.addEventListener("click", function(){
         this.parentElement.remove();
         countItem();
     })
@@ -69,7 +69,7 @@ function countItem() {
     itemsCounter.innerText = unCheckedCount + " items left"; 
 }
 
-document.querySelector(".clear-completed").addEventListener("click", function() {
+document.querySelector(".clear__completed").addEventListener("click", () => {
     document.querySelectorAll(".unactive").forEach(element => {
         element.remove();
         countItem();
@@ -77,27 +77,33 @@ document.querySelector(".clear-completed").addEventListener("click", function() 
 })
 
 document.querySelector(".all").addEventListener("click", function() {
+    document.querySelector('.blue').classList.remove("blue");
     document.querySelectorAll(".todos").forEach(element => {
         element.style.display = "flex";
     })
+    this.classList.add("blue");
 })
 
 document.querySelector(".completed").addEventListener("click", function() {
+    document.querySelector('.blue').classList.remove("blue");
     document.querySelectorAll(".unactive").forEach(element => {
         element.style.display = "flex";        
     })
     document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
         element.style.display = "none";
     })
+    this.classList.add("blue");
 })
 
 document.querySelector(".active").addEventListener("click", function() {
+    document.querySelector('.blue').classList.remove("blue");
     document.querySelectorAll(".unactive").forEach(element => {
         element.style.display = "none";        
     })
     document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
         element.style.display = "flex";
     })
+    this.classList.add("blue");
 })
 
 const el = document.getElementById('sortable');
