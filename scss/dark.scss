@@ -38,6 +38,14 @@ body {
         color: $lightGrayishDT;
         border-bottom-color: $veryDarkGrayishDT;
     }
+
+    &__cancel {
+        color: $veryDarkGrayishDT;
+
+        &:hover {
+            color: $specialBlue;
+        }
+    }
   
 }
 

@@ -6,7 +6,7 @@ const itemsCounter = document.querySelector(".todo__footer--counter");
 const todoFooter = document.querySelector(".todo__footer");
 const small = document.querySelector(".small");
 
-todoAdd.addEventListener('keyup', function(e){
+todoAdd.addEventListener('keyup',(e) => {
     if(e.keyCode === 13) {
         e.preventDefault();
         todoAddBtn.click();
@@ -17,23 +17,24 @@ todoAddBtn.addEventListener('click', function() {
     if(todoAdd.value == "") {
         return false;
     }; 
-    console.log(todoAdd.value);
+    
     const todoWrapper = document.createElement("div");
     const todosCircle = document.createElement("button");
     const paragraph = document.createElement("p");
-   
+    const todoLittleWrapper = document.createElement("div");
     const cancelBtn = document.createElement('button');
 
     todoWrapper.classList.add("todo__item");
-    paragraph.classList.add("todos");
+    todoWrapper.classList.add("todos");
     paragraph.innerText = todoAdd.value;
-
+    todoLittleWrapper.classList.add("todo__wrapper")
     todosCircle.classList.add("todo__circle");
-    cancelBtn.classList.add("todos-cancel");
+    cancelBtn.classList.add("todo__cancel");
     cancelBtn.innerText = "X";
 
-    todoWrapper.appendChild(todosCircle);
-    todoWrapper.appendChild(paragraph);
+    todoLittleWrapper.appendChild(todosCircle);
+    todoLittleWrapper.appendChild(paragraph);
+    todoWrapper.appendChild(todoLittleWrapper);
     todoWrapper.appendChild(cancelBtn);
     todoList.prepend(todoWrapper); 
     
@@ -44,6 +45,7 @@ todoAddBtn.addEventListener('click', function() {
     todosCircle.addEventListener('click', function() {
         todosCircle.classList.toggle("clicked");
         paragraph.classList.toggle("checked");
+        todoWrapper.classList.toggle("unactive");
         countItem();
     })
 
@@ -68,12 +70,10 @@ function countItem() {
 }
 
 document.querySelector(".clear-completed").addEventListener("click", function() {
-    document.querySelectorAll(".checked").forEach(element => {
+    document.querySelectorAll(".unactive").forEach(element => {
         element.remove();
         countItem();
     })
-
-
 })
 
 document.querySelector(".all").addEventListener("click", function() {
@@ -83,19 +83,19 @@ document.querySelector(".all").addEventListener("click", function() {
 })
 
 document.querySelector(".completed").addEventListener("click", function() {
-    document.querySelectorAll(".checked").forEach(element => {
+    document.querySelectorAll(".unactive").forEach(element => {
         element.style.display = "flex";        
     })
-    document.querySelectorAll(".todos:not(.checked)").forEach(element => {
+    document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
         element.style.display = "none";
     })
 })
 
 document.querySelector(".active").addEventListener("click", function() {
-    document.querySelectorAll(".checked").forEach(element => {
+    document.querySelectorAll(".unactive").forEach(element => {
         element.style.display = "none";        
     })
-    document.querySelectorAll(".todos:not(.checked)").forEach(element => {
+    document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
         element.style.display = "flex";
     })
 })
