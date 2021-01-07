@@ -6,6 +6,12 @@ const itemsCounter = document.querySelector(".todo__footer--counter");
 const todoFooter = document.querySelector(".todo__footer");
 const small = document.querySelector(".small");
 
+const themeSwitcher = document.querySelector(".header__icon");
+
+themeSwitcher.addEventListener('click', function() {
+    console.log("Zmień tło");
+})
+
 todoAdd.addEventListener('keyup',(e) => {
     if(e.keyCode === 13) {
         e.preventDefault();

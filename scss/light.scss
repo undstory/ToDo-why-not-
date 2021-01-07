@@ -1,0 +1,79 @@
+
+
+    
+
+body {
+    background-color: $veryLightGray;
+}
+
+.container {
+    background-image: url(../images/bg-desktop-light.jpg);
+    height: 300px;
+    background-size: cover;
+}
+
+.header {
+    color: $lightGrayishDT;  
+    &__icon {
+        background-image: url("../images/icon-moon.svg");
+        height: 26px;
+        width: 26px;
+        margin-top: 1.5rem;
+    }
+}
+
+.todo {
+    &__new {
+        background-color: $veryLightGray;
+        color: $darkGrayish;
+    }
+
+
+    &__add {
+        color: $veryDarkGrayish;
+
+        &::placeholder {
+            color: $darkGrayish;
+        } 
+    }
+
+    &__item {
+        background-color: $veryLightGray;
+        color: $veryDarkGrayish;
+        border-bottom-color: $lightGrayishBlueDT;
+    }
+
+    &__cancel {
+        color: $lightGrayish;
+
+        &:hover {
+            color: $darkGrayish; 
+        }
+    }
+  
+}
+
+.todo {
+    &__footer {
+        background-color: $veryLightGray;
+        color: $veryDarkGrayish;
+
+        &--btn {
+            color: $darkGrayish;
+
+            &:hover {
+                color: $veryDarkGrayish; 
+            }
+        }
+    }
+}
+
+.small {
+    color: $veryDarkGrayishDT;
+   
+}
+
+.checked {
+    color: $darkGrayish;
+}
+
