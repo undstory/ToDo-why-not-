@@ -1,9 +1,29 @@
 
+:root {
+    --primary-color: hsl(0, 0%, 98%)
+    --second-color: hsl(234, 39%, 85%);
+    --fontlittle-color: hsl(236, 9%, 61%);
+    --fontbig-color: hsl(235, 19%, 35%);
+    --hover-color: hsl(236, 33%, 92%);
+    --cancel-main: hsl(233, 11%, 84%);
+    --small-color: hsl(233, 14%, 35%);
+    --blue-color: hsl(220, 98%, 61%);
+}
 
+html[data-theme="dark"] {
+    --primary-color: hsl(235, 21%, 11%);
+    --second-color: hsl(235, 24%, 19%);
+    --fontlittle-color: hsl(233, 14%, 35%);;
+    --fontbig-color: hsl(235, 19%, 35%);
+    --hover-color: hsl(236, 33%, 92%);
+    --cancel-main: hsl(233, 11%, 84%);
+    --small-color: hsl(233, 14%, 35%);
+    --blue-color: hsl(220, 98%, 61%);
+}
     
 
 body {
-    background-color: $veryLightGray;
+    background-color: var(--primary-color);
 }
 
 .container {
@@ -13,7 +33,7 @@ body {
 }
 
 .header {
-    color: $lightGrayishDT;  
+    color: var(--second-color);  
     &__icon {
         background-image: url("../images/icon-moon.svg");
         height: 26px;
@@ -24,30 +44,30 @@ body {
 
 .todo {
     &__new {
-        background-color: $veryLightGray;
-        color: $darkGrayish;
+        background-color: var(--primary-color);
+        color: var(--fontlittle-color);
     }
 
 
     &__add {
-        color: $veryDarkGrayish;
+        color: var(--fontbig-color);
 
         &::placeholder {
-            color: $darkGrayish;
+            color: var(--fontlittle-color);
         } 
     }
 
     &__item {
-        background-color: $veryLightGray;
-        color: $veryDarkGrayish;
-        border-bottom-color: $lightGrayishBlueDT;
+        background-color: var(--primary-color);
+        color: var(--fontbig-color);
+        border-bottom-color: var(--hover-color);
     }
 
     &__cancel {
-        color: $lightGrayish;
+        color: var(--cancel-main);
 
         &:hover {
-            color: $darkGrayish; 
+            color: var(--fontlittle-color); 
         }
     }
   
@@ -55,25 +75,25 @@ body {
 
 .todo {
     &__footer {
-        background-color: $veryLightGray;
-        color: $veryDarkGrayish;
+        background-color: var(--primary-color);
+        color: var(--fontbig-color);
 
         &--btn {
-            color: $darkGrayish;
+            color: var(--fontlittle-color);
 
             &:hover {
-                color: $veryDarkGrayish; 
+                color: var(--fontbig-color); 
             }
         }
     }
 }
 
 .small {
-    color: $veryDarkGrayishDT;
+    color: var(--small-color);
    
 }
 
 .checked {
-    color: $darkGrayish;
+    color: var(--fontlittle-color);
 }
 

@@ -8,9 +8,18 @@ const small = document.querySelector(".small");
 
 const themeSwitcher = document.querySelector(".header__icon");
 
-themeSwitcher.addEventListener('click', function() {
-    console.log("Zmień tło");
-})
+let currentTheme = "light";
+themeSwitcher.addEventListener('click', changeTheme, false);
+
+function changeTheme() {
+    if(currentTheme === "light") {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        currentTheme = "dark";
+    } else if(currentTheme === "dark") {
+        document.documentElement.removeAttribute('data-theme', 'dark');
+        currentTheme = "light";
+    }
+}
 
 todoAdd.addEventListener('keyup',(e) => {
     if(e.keyCode === 13) {

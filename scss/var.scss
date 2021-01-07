@@ -10,18 +10,19 @@ $gradient: linear-gradient( hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
 // Light theme 
 
-$veryLightGray: hsl(0, 0%, 98%);
+$veryLightGray: hsl(0, 0%, 98%); //primary
 $veryLightGrayish: hsl(236, 33%, 92%);
-$lightGrayish: hsl(233, 11%, 84%);
-$darkGrayish: hsl(236, 9%, 61%);
-$veryDarkGrayish: hsl(235, 19%, 35%);
+$lightGrayish: hsl(233, 11%, 84%); //cancelmain
+$darkGrayish: hsl(236, 9%, 61%); //font-little
+$veryDarkGrayish: hsl(235, 19%, 35%); //font-big
 
 // Dark theme
 
 $veryDarkBlue: hsl(235, 21%, 11%);
 $desaturatedBlue: hsl(235, 24%, 19%);
-$lightGrayishDT: hsl(234, 39%, 85%);
+$lightGrayishDT: hsl(234, 39%, 85%); //second
 $lightGrayishBlueDT: hsl(236, 33%, 92%); //hover
 $darkGrayishDT: hsl(234, 11%, 52%);
-$veryDarkGrayishDT: hsl(233, 14%, 35%);
+$veryDarkGrayishDT: hsl(233, 14%, 35%); //small
 $veryDarkGrayishDT2: hsl(237, 14%, 26%);
+
