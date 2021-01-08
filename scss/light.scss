@@ -1,29 +1,35 @@
 
 :root {
-    --primary-color: hsl(0, 0%, 98%)
+    --primary-color: hsl(0, 0%, 98%);
+    --background-color: hsl(0, 0%, 98%);
     --second-color: hsl(234, 39%, 85%);
     --fontlittle-color: hsl(236, 9%, 61%);
     --fontbig-color: hsl(235, 19%, 35%);
-    --hover-color: hsl(236, 33%, 92%);
+    --hover-color: hsl(236, 14%, 35%);
     --cancel-main: hsl(233, 11%, 84%);
     --small-color: hsl(233, 14%, 35%);
     --blue-color: hsl(220, 98%, 61%);
+    --font-add:  hsl(233, 14%, 35%);
+    --border-color: hsl(234, 38%, 85%);
 }
 
 html[data-theme="dark"] {
-    --primary-color: hsl(235, 21%, 11%);
-    --second-color: hsl(235, 24%, 19%);
-    --fontlittle-color: hsl(233, 14%, 35%);;
-    --fontbig-color: hsl(235, 19%, 35%);
+    --primary-color:  hsl(235, 24%, 19%);
+    --background-color: hsl(235, 21%, 11%);
+    --second-color: hsl(234, 11%, 52%);
+    --fontlittle-color:   hsl(233, 14%, 35%);
+    --fontbig-color:  hsl(233, 11%, 84%);;
     --hover-color: hsl(236, 33%, 92%);
-    --cancel-main: hsl(233, 11%, 84%);
+    --cancel-main: hsl(235, 19%, 35%);
     --small-color: hsl(233, 14%, 35%);
     --blue-color: hsl(220, 98%, 61%);
+    --font-add: hsl(236, 33%, 92%);
+    --border-color: hsl(236, 14%, 35%);
 }
     
 
 body {
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
 }
 
 .container {
@@ -33,7 +39,8 @@ body {
 }
 
 .header {
-    color: var(--second-color);  
+    color: $veryLightGray;  
+
     &__icon {
         background-image: url("../images/icon-moon.svg");
         height: 26px;
@@ -50,24 +57,32 @@ body {
 
 
     &__add {
-        color: var(--fontbig-color);
+        color: var(--font-add);
 
         &::placeholder {
             color: var(--fontlittle-color);
         } 
+
+        &--btn {
+            color: var(--second-color);
+
+            &:hover {
+                color: var(--hover-color);
+            }
+        }
     }
 
     &__item {
         background-color: var(--primary-color);
         color: var(--fontbig-color);
-        border-bottom-color: var(--hover-color);
+        border-bottom-color: var(--border-color);
     }
 
     &__cancel {
         color: var(--cancel-main);
 
         &:hover {
-            color: var(--fontlittle-color); 
+            color: var(--hover-color); 
         }
     }
   

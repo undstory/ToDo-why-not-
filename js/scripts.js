@@ -6,6 +6,9 @@ const itemsCounter = document.querySelector(".todo__footer--counter");
 const todoFooter = document.querySelector(".todo__footer");
 const small = document.querySelector(".small");
 
+const container = document.querySelector(".container");
+const themeSwitcherIcon = document.querySelector(".header__icon");
+
 const themeSwitcher = document.querySelector(".header__icon");
 
 let currentTheme = "light";
@@ -14,9 +17,13 @@ themeSwitcher.addEventListener('click', changeTheme, false);
 function changeTheme() {
     if(currentTheme === "light") {
         document.documentElement.setAttribute('data-theme', 'dark');
+        container.style.backgroundImage = "url(../images/bg-desktop-dark.jpg)";
+        themeSwitcherIcon.style.backgroundImage = "url(../images/icon-sun.svg)";
         currentTheme = "dark";
     } else if(currentTheme === "dark") {
         document.documentElement.removeAttribute('data-theme', 'dark');
+        container.style.backgroundImage = "url(../images/bg-desktop-light.jpg)";
+        themeSwitcherIcon.style.backgroundImage = "url(../images/icon-moon.svg)";
         currentTheme = "light";
     }
 }
