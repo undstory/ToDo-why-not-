@@ -35,7 +35,7 @@ function changeTheme() {
 }
 //  ----------------
 
-input.addEventListener('keyup', e => {
+input.addEventListener('keyup', (e) => {
     if(e.keyCode === 13) {
         e.preventDefault();
         if(input.value == "") {
@@ -45,6 +45,15 @@ input.addEventListener('keyup', e => {
        
     }
 })
+
+add.addEventListener('click', (e) => {
+    if(input.value == ""){
+        return false;
+    }
+    addTodo();
+})
+
+
 
 function addTodo() {
     const task = document.createElement('li');
