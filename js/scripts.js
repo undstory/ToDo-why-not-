@@ -71,11 +71,24 @@ todoAddBtn.addEventListener('click', () => {
         countItem();
     })
 
+    todosCircle.addEventListener('keyup', () => {
+        todosCircle.classList.toggle("clicked");
+        paragraph.classList.toggle("checked");
+        todoWrapper.classList.toggle("unactive");
+        countItem();
+    })
+
     cancelBtn.addEventListener("click", function(){
         this.parentElement.remove();
         countItem();
     })
+
+    cancelBtn.addEventListener("keyup", function(){
+        this.parentElement.remove();
+        countItem();
+    })
 })
+
 
 function countItem() {
     const itemCount = todoList.childElementCount;
