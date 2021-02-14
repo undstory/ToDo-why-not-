@@ -1,11 +1,17 @@
+const input = document.querySelector('.todo__add');
+const add = document.querySelector('.todo__add--btn');
+const list = document.querySelector('.todo__list');
 
-const todoAdd = document.querySelector(".todo__add");
-const todoList = document.querySelector(".todo__list");
-const todoAddBtn = document.querySelector(".todo__add--btn");
-const itemsCounter = document.querySelector(".todo__footer--counter");
-const todoFooter = document.querySelector(".todo__footer");
-const small = document.querySelector(".small");
+const filters = document.querySelector('.todo__footer--filters');
 
+const btnAll = document.querySelector('all');
+const btnActive = document.querySelector('active');
+const btnCompleted = document.querySelector('completed');
+const btnClear = document.querySelector('.clear__completed');
+
+let todo = [];
+
+// theme
 const container = document.querySelector(".container");
 const themeSwitcherIcon = document.querySelector(".header__icon");
 
@@ -27,117 +33,88 @@ function changeTheme() {
         currentTheme = "light";
     }
 }
+//  ----------------
 
-todoAdd.addEventListener('keyup',(e) => {
+input.addEventListener('keyup', e => {
     if(e.keyCode === 13) {
         e.preventDefault();
-        todoAddBtn.click();
+        if(input.value == "") {
+            return false;
+        }
+        addTodo();
+       
     }
 })
 
-todoAddBtn.addEventListener('click', () => {
-    if(todoAdd.value == "") {
-        return false;
-    }; 
-    
-    const todoWrapper = document.createElement("div");
-    const todosCircle = document.createElement("button");
-    const paragraph = document.createElement("p");
-    const todoLittleWrapper = document.createElement("div");
-    const cancelBtn = document.createElement('button');
+function addTodo() {
+    const task = document.createElement('li');
+    const check = document.createElement('input');
+    const content = document.createElement('p');
+    const cancel = document.createElement('button');
+    const wrapper = document.createElement("div");
+    const num = todo.length + 1; 
 
-    todoWrapper.classList.add("todo__item");
-    todoWrapper.classList.add("todos");
-    paragraph.innerText = todoAdd.value;
-    todoLittleWrapper.classList.add("todo__wrapper")
-    todosCircle.classList.add("todo__circle");
-    cancelBtn.classList.add("todo__cancel");
-    cancelBtn.innerText = "X";
-
-    todoLittleWrapper.appendChild(todosCircle);
-    todoLittleWrapper.appendChild(paragraph);
-    todoWrapper.appendChild(todoLittleWrapper);
-    todoWrapper.appendChild(cancelBtn);
-    todoList.prepend(todoWrapper); 
-    
-    todoAdd.value = "";
-    
-    countItem();
-
-    todosCircle.addEventListener('click', () => {
-        todosCircle.classList.toggle("clicked");
-        paragraph.classList.toggle("checked");
-        todoWrapper.classList.toggle("unactive");
-        countItem();
+    todo.push({
+        id: num,
+        value: input.value,
+        state: false
     })
 
-    // cancelBtn.addEventListener("click", function(){
-    //     this.parentElement.remove();
-    //     countItem();
-    // })
-})
+    check.setAttribute("type", "checkbox");
+    check.classList.add('todo__check');
+    check.id = `checkbox${num}`
 
-todoList.addEventListener('click', e => {
-    const cancelBtn = e.target;
-    if(cancelBtn.matches('.todo__cancel')){
-        cancelBtn.parentElement.remove();
-    }
+    content.textContent = todo[num-1].value;
+
+    task.classList.add('todo__item');
+    task.classList.add('todos');
+    task.dataset.id = num;
+    task.dataset.state = false; 
+
+    cancel.textContent = "x";
+    cancel.classList.add("todo__cancel");
+    cancel.id = `btn${num}`;
+    
+    wrapper.classList.add("todo__wrapper");
+
+    wrapper.appendChild(check);
+    wrapper.appendChild(content);
+    task.appendChild(wrapper);
+    task.appendChild(cancel);
+    list.prepend(task);
+
+    input.value = '';
 
     countItem();
-
-})
-
-
-function countItem() {
-    const itemCount = todoList.childElementCount;
-    if(itemCount > 0) {
-        todoFooter.style.display = "flex";
-        small.style.display = "flex";
-    } else {
-        todoFooter.style.display = "none";
-        small.style.display = "none";
-    }
-    const checkedElement = document.querySelectorAll(".checked").length;
-    const unCheckedCount = itemCount - checkedElement;
-    itemsCounter.innerText = unCheckedCount + " items left"; 
 }
 
-document.querySelector(".clear__completed").addEventListener("click", () => {
-    document.querySelectorAll(".unactive").forEach(element => {
-        element.remove();
-        countItem();
-    })
+list.addEventListener('click', e => {
+    const closeBtn = e.target; 
+    let flag = false;
+
+    if(closeBtn.matches('.todo__cancel')) {
+        closeBtn.parentElement.remove();
+    
+        for(let i=0; i < todo.length && flag === false; i++) {
+            if(parseInt(closeBtn.parentElement.dataset.id) === todo[i].id) {
+                todo.splice(i, 1); 
+                flag = true;
+            }
+        }
+    }
+    countItem();
 })
 
-document.querySelector(".all").addEventListener("click", function() {
-    document.querySelector('.blue').classList.remove("blue");
-    document.querySelectorAll(".todos").forEach(element => {
-        element.style.display = "flex";
-    })
-    this.classList.add("blue");
-})
+list.addEventListener('change', e => {
+    const check = e.target;
+    const task = check.parentElement;
+    const taskIndex = todo.findIndex(elem => elem.id === parseInt(task.dataset.id))
 
-document.querySelector(".completed").addEventListener("click", function() {
-    document.querySelector('.blue').classList.remove("blue");
-    document.querySelectorAll(".unactive").forEach(element => {
-        element.style.display = "flex";        
-    })
-    document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
-        element.style.display = "none";
-    })
-    this.classList.add("blue");
+    if(check.matches('.todo__check') && check.checked){
+        todo[taskIndex].state = true;
+        task.dataset.state = true;
+    } else {
+        todo[taskIndex].state = false;
+        task.dataset.state = false;
+    }
 })
-
-document.querySelector(".active").addEventListener("click", function() {
-    document.querySelector('.blue').classList.remove("blue");
-    document.querySelectorAll(".unactive").forEach(element => {
-        element.style.display = "none";        
-    })
-    document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
-        element.style.display = "flex";
-    })
-    this.classList.add("blue");
-})
-
-const el = document.getElementById('sortable');
-const sortable = Sortable.create(el);
