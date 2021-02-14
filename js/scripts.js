@@ -71,22 +71,20 @@ todoAddBtn.addEventListener('click', () => {
         countItem();
     })
 
-    todosCircle.addEventListener('keyup', () => {
-        todosCircle.classList.toggle("clicked");
-        paragraph.classList.toggle("checked");
-        todoWrapper.classList.toggle("unactive");
-        countItem();
-    })
+    // cancelBtn.addEventListener("click", function(){
+    //     this.parentElement.remove();
+    //     countItem();
+    // })
+})
 
-    cancelBtn.addEventListener("click", function(){
-        this.parentElement.remove();
-        countItem();
-    })
+todoList.addEventListener('click', e => {
+    const cancelBtn = e.target;
+    if(cancelBtn.matches('.todo__cancel')){
+        cancelBtn.parentElement.remove();
+    }
 
-    cancelBtn.addEventListener("keyup", function(){
-        this.parentElement.remove();
-        countItem();
-    })
+    countItem();
+
 })
 
 
