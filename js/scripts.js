@@ -3,7 +3,6 @@ const add = document.querySelector('.todo__add--btn');
 const list = document.querySelector('.todo__list');
 
 const todoFooter = document.querySelector(".todo__footer");
-const small = document.querySelector(".small");
 const itemsCounter = document.querySelector(".todo__footer--counter");
 
 const filters = document.querySelector('.todo__footer--filters');
@@ -46,7 +45,6 @@ input.addEventListener('keyup', (e) => {
             return false;
         }
         addTodo();
-       
     }
 })
 
@@ -82,7 +80,6 @@ function addTodo() {
 
     cancel.textContent = "x";
     cancel.classList.add("todo__cancel");
-    cancel.id = `btn${num}`;
     
     wrapper.classList.add("todo__wrapper");
 
@@ -118,8 +115,6 @@ list.addEventListener('click', e => {
     const check = e.target;
     const task = check.parentElement.parentElement;
 
-    console.log(task);
-
     if(check.matches('.todo__circle')){
         check.classList.toggle("clicked");
         check.nextElementSibling.classList.toggle("checked");
@@ -133,10 +128,8 @@ function countItem() {
     console.log(itemCount);
     if(itemCount > 0) {
         todoFooter.style.display = "flex";
-        small.style.display = "flex";
     } else {
         todoFooter.style.display = "none";
-        small.style.display = "none";
     }
 
     const checkedElement = document.querySelectorAll(".checked").length;
@@ -180,8 +173,3 @@ btnCompleted.addEventListener("click", function() {
     })
     this.classList.add("blue");
 })
-
-
-
-// const el = document.getElementById('sortable');
-// const sortable = Sortable.create(el);
