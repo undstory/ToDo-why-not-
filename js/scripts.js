@@ -183,5 +183,5 @@ btnCompleted.addEventListener("click", function() {
 
 
 
-const el = document.getElementById('sortable');
-const sortable = Sortable.create(el);
+// const el = document.getElementById('sortable');
+// const sortable = Sortable.create(el);
