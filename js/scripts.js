@@ -2,11 +2,15 @@ const input = document.querySelector('.todo__add');
 const add = document.querySelector('.todo__add--btn');
 const list = document.querySelector('.todo__list');
 
+const todoFooter = document.querySelector(".todo__footer");
+const small = document.querySelector(".small");
+const itemsCounter = document.querySelector(".todo__footer--counter");
+
 const filters = document.querySelector('.todo__footer--filters');
 
-const btnAll = document.querySelector('all');
-const btnActive = document.querySelector('active');
-const btnCompleted = document.querySelector('completed');
+const btnAll = document.querySelector('.all');
+const btnActive = document.querySelector('.active');
+const btnCompleted = document.querySelector('.completed');
 const btnClear = document.querySelector('.clear__completed');
 
 let todo = [];
@@ -53,11 +57,9 @@ add.addEventListener('click', (e) => {
     addTodo();
 })
 
-
-
 function addTodo() {
     const task = document.createElement('li');
-    const check = document.createElement('input');
+    const check = document.createElement('button');
     const content = document.createElement('p');
     const cancel = document.createElement('button');
     const wrapper = document.createElement("div");
@@ -69,9 +71,7 @@ function addTodo() {
         state: false
     })
 
-    check.setAttribute("type", "checkbox");
-    check.classList.add('todo__check');
-    check.id = `checkbox${num}`
+    check.classList.add('todo__circle');
 
     content.textContent = todo[num-1].value;
 
@@ -93,7 +93,6 @@ function addTodo() {
     list.prepend(task);
 
     input.value = '';
-
     countItem();
 }
 
@@ -111,19 +110,78 @@ list.addEventListener('click', e => {
             }
         }
     }
+
     countItem();
 })
 
-list.addEventListener('change', e => {
+list.addEventListener('click', e => {
     const check = e.target;
-    const task = check.parentElement;
-    const taskIndex = todo.findIndex(elem => elem.id === parseInt(task.dataset.id))
+    const task = check.parentElement.parentElement;
 
-    if(check.matches('.todo__check') && check.checked){
-        todo[taskIndex].state = true;
-        task.dataset.state = true;
-    } else {
-        todo[taskIndex].state = false;
-        task.dataset.state = false;
+    console.log(task);
+
+    if(check.matches('.todo__circle')){
+        check.classList.toggle("clicked");
+        check.nextElementSibling.classList.toggle("checked");
+        task.classList.toggle("unactive");
+        countItem();
     }
 })
+
+function countItem() {
+    const itemCount = list.childElementCount;
+    console.log(itemCount);
+    if(itemCount > 0) {
+        todoFooter.style.display = "flex";
+        small.style.display = "flex";
+    } else {
+        todoFooter.style.display = "none";
+        small.style.display = "none";
+    }
+
+    const checkedElement = document.querySelectorAll(".checked").length;
+    const unCheckedCount = itemCount - checkedElement;
+    itemsCounter.innerText = unCheckedCount + " items left"; 
+}
+
+btnClear.addEventListener("click", () => {
+    document.querySelectorAll(".unactive").forEach(element => {
+        element.remove();
+        countItem();
+    })
+})
+
+btnActive.addEventListener("click", function() {
+    document.querySelector('.blue').classList.remove("blue");
+    document.querySelectorAll(".unactive").forEach(element => {
+        element.style.display = "none";        
+    })
+    document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
+        element.style.display = "flex";
+    })
+    this.classList.add("blue");
+})
+
+btnAll.addEventListener("click", function() {
+    document.querySelector('.blue').classList.remove("blue");
+    document.querySelectorAll(".todos").forEach(element => {
+        element.style.display = "flex";
+    })
+    this.classList.add("blue");
+})
+
+btnCompleted.addEventListener("click", function() {
+    document.querySelector('.blue').classList.remove("blue");
+    document.querySelectorAll(".unactive").forEach(element => {
+        element.style.display = "flex";        
+    })
+    document.querySelectorAll(".todos:not(.unactive)").forEach(element => {
+        element.style.display = "none";
+    })
+    this.classList.add("blue");
+})
+
+
+
+const el = document.getElementById('sortable');
+const sortable = Sortable.create(el);
